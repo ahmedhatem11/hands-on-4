@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 
-@Path("/project")
+@Path("/projects")
 @RequestScoped
 public class ProjectResource {
     private static final Logger LOGGER = Logger.getLogger(ProjectResource.class.getName());

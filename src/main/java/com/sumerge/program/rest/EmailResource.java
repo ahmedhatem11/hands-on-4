@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 
-@Path("/email")
+@Path("/emails")
 @RequestScoped
 public class EmailResource {
     private static final Logger LOGGER = Logger.getLogger(EmailResource.class.getName());

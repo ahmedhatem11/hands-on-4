@@ -12,7 +12,7 @@ public class Address implements Serializable {
 
     @Id
     @Column(name = "ADDRESSID", nullable = false)
-    private int adressID;
+    private int addressID;
 
     @Column(name = "ADDLINE1")
     private String addressLine1;
@@ -39,12 +39,12 @@ public class Address implements Serializable {
     public Address() {
     }
 
-    public int getAdressID() {
-        return adressID;
+    public int getAddressID() {
+        return addressID;
     }
 
-    public void setAdressID(int adressID) {
-        this.adressID = adressID;
+    public void setAddressID(int addressID) {
+        this.addressID = addressID;
     }
 
     public String getAddressLine1() {

@@ -1,11 +1,12 @@
 package com.sumerge.program.user.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
-import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 @Entity
 @Table(name = "EMPLOYEE", schema = "STAFF")
@@ -40,9 +41,10 @@ public class Employee implements Serializable {
     @Column(name = "NAMETITLE")
     private String NameTitle;
 
+    @JsonIgnore
     @ManyToMany
-    @JoinTable(name = "PROJECTMEMBER", joinColumns = @JoinColumn(name = "PROJID"), inverseJoinColumns = @JoinColumn(name = "EMPID"))
-    private Set<Project> projects = new HashSet<Project>();
+    @JoinTable(name = "PROJECTMEMBER", joinColumns = @JoinColumn(name = "EMPID"), inverseJoinColumns = @JoinColumn(name = "PROJID"))
+    private List<Project> projects;
 
 
     public Employee() {
@@ -105,11 +107,11 @@ public class Employee implements Serializable {
         NameTitle = nameTitle;
     }
 
-    public Set<Project> getProjects() {
+    public List<Project> getProjects() {
         return projects;
     }
 
-    public void setProjects(Set<Project> projects) {
+    public void setProjects(List<Project> projects) {
         this.projects = projects;
     }
 

@@ -12,9 +12,6 @@ import javax.ws.rs.core.SecurityContext;
 
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 
-/**
- * @author Ahmed Anwar
- */
 @Path("/employees")
 @RequestScoped
 public class EmployeeResource
@@ -34,6 +31,21 @@ public class EmployeeResource
         try {
             return Response.ok().
                     entity(repo.getEmployee(id)).
+                    build();
+        } catch (Exception e) {
+            return Response.serverError().
+                    entity(e).
+                    build();
+        }
+    }
+
+    @GET
+    @Path("{id}/projects")
+    @Produces(APPLICATION_JSON)
+    public Response getEmployeeProjects(@PathParam("id") String id) {
+        try {
+            return Response.ok().
+                    entity(repo.getProjects(id)).
                     build();
         } catch (Exception e) {
             return Response.serverError().

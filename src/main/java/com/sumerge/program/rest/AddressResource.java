@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 
-@Path("/address")
+@Path("/addresses")
 @RequestScoped
 public class AddressResource {
     private static final Logger LOGGER = Logger.getLogger(AddressResource.class.getName());
@@ -55,7 +55,7 @@ public class AddressResource {
     @Consumes(APPLICATION_JSON)
     public Response addAddress(Address address) {
         try {
-            if(repo.getAddress(address.getAdressID()) == null){
+            if(repo.getAddress(address.getAddressID()) == null){
                 if (emrepo.getEmployee(address.getEmployee().getEmpId()) !=null){
                     address.setEmployee(emrepo.getEmployee(address.getEmployee().getEmpId()));
                 }
@@ -78,7 +78,7 @@ public class AddressResource {
     @Consumes(APPLICATION_JSON)
     public Response updateAddress(Address address) {
         try {
-            Address originalAddress = repo.getAddress(address.getAdressID());
+            Address originalAddress = repo.getAddress(address.getAddressID());
             if(originalAddress != null){
 
 

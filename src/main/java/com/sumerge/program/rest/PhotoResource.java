@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 
-@Path("/photo")
+@Path("/photos")
 @RequestScoped
 public class PhotoResource {
     private static final Logger LOGGER = Logger.getLogger(PhotoResource.class.getName());

@@ -3,8 +3,7 @@ package com.sumerge.program.user.entity;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Table(name = "PROJECT", schema = "STAFF")
@@ -34,7 +33,7 @@ public class Project implements Serializable {
 
     @ManyToMany
     @JoinTable(name = "PROJECTMEMBER", joinColumns = @JoinColumn(name = "PROJID"), inverseJoinColumns = @JoinColumn(name = "EMPID"))
-    private Set<Employee> employees = new HashSet<Employee>();
+    private List<Employee> employees;
 
     public Project() {
     }
@@ -87,11 +86,11 @@ public class Project implements Serializable {
         this.description = description;
     }
 
-    public Set<Employee> getEmployees() {
+    public List<Employee> getEmployees() {
         return employees;
     }
 
-    public void setEmployees(Set<Employee> employees) {
+    public void setEmployees(List<Employee> employees) {
         this.employees = employees;
     }
 }
