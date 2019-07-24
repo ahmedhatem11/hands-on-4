@@ -9,9 +9,11 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
+@EntityListeners(EmployeeListener.class)
 @Table(name = "EMPLOYEE", schema = "STAFF")
 @NamedQueries({
-        @NamedQuery(name = "Employee.findAll", query = "SELECT e FROM Employee e")
+        @NamedQuery(name = "Employee.findAll", query = "SELECT e FROM Employee e"),
+        @NamedQuery(name = "Employee.findByName", query = "SELECT e FROM Employee e where e.givenName = :name")
 })
 @XmlRootElement
 public class Employee implements Serializable {

@@ -35,7 +35,11 @@ public class Project implements Serializable {
     @JoinTable(name = "PROJECTMEMBER", joinColumns = @JoinColumn(name = "PROJID"), inverseJoinColumns = @JoinColumn(name = "EMPID"))
     private List<Employee> employees;
 
+    @Transient
+    private String tagetDateString;
+
     public Project() {
+        getTagetDateString();
     }
 
     public String getProjId() {
@@ -92,5 +96,13 @@ public class Project implements Serializable {
 
     public void setEmployees(List<Employee> employees) {
         this.employees = employees;
+    }
+
+    public String getTagetDateString() {
+        return targetDate+ " String";
+    }
+
+    public void setTagetDateString(String tagetDateString) {
+        this.tagetDateString = tagetDateString;
     }
 }

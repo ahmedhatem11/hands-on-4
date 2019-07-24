@@ -25,12 +25,27 @@ public class EmployeeResource
     private EmployeeRepository repo;
 
     @GET
-    @Path("{id}")
+    @Path("id/{id}")
     @Produces(APPLICATION_JSON)
     public Response getEmployee(@PathParam("id") String id) {
         try {
             return Response.ok().
                     entity(repo.getEmployee(id)).
+                    build();
+        } catch (Exception e) {
+            return Response.serverError().
+                    entity(e).
+                    build();
+        }
+    }
+
+    @GET
+    @Path("name/{name}")
+    @Produces(APPLICATION_JSON)
+    public Response getEmployeeByName(@PathParam("name") String name) {
+        try {
+            return Response.ok().
+                    entity(repo.getEmployeeByName(name)).
                     build();
         } catch (Exception e) {
             return Response.serverError().

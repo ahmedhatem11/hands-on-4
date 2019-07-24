@@ -6,6 +6,8 @@ import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import static java.util.logging.Level.SEVERE;
 
@@ -31,6 +33,17 @@ public class EmployeeRepository {
 		LOGGER.info("Fetching employees list");
 		try {
 			return em.createNamedQuery("Employee.findAll", Employee.class).getResultList();
+		} catch (Exception e) {
+			LOGGER.log(SEVERE, e.getMessage(), e);
+			throw e;
+		}
+	}
+
+	public List<Employee> getEmployeeByName(String name) {
+		LOGGER.info("Fetching employees list");
+		try {
+			TypedQuery<Employee> query = em.createNamedQuery("Employee.findByName", Employee.class).setParameter("name", name);
+			return query.getResultList();
 		} catch (Exception e) {
 			LOGGER.log(SEVERE, e.getMessage(), e);
 			throw e;
